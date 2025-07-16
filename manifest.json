@@ -1,21 +1,17 @@
 {
-  "id": "/",
   "name": "Neo Auto Vault",
   "short_name": "NeoVault",
-  "description": "A simple offline savings tracker built by Neo.",
   "start_url": "./index.html",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#ffffff",
   "theme_color": "#007a3d",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ],
-  "launch_handler": {
-    "client_mode": "auto"
-  }
+  ]
 }
