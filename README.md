@@ -1,2 +1,2 @@
 # Neo-auto-vault
-my savings trcker app
+my savings tracker app
