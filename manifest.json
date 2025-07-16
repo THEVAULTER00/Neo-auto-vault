@@ -1,6 +1,7 @@
 {
   "name": "Neo Auto Vault",
   "short_name": "NeoVault",
+  "description": "A daily savings tracker with calendar view and progress checkpoints, helping you hit your financial goals.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
