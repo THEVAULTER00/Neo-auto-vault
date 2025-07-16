@@ -2,13 +2,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neo Auto Vault</title>
-  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      color: #007a3d;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .day {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 12px;
+      color: #333;
+    }
+    .today {
+      background: #007a3d;
+      color: white;
+      font-weight: bold;
+    }
+    .checkpoint {
+      border: 2px dashed #007a3d;
+    }
+  </style>
 </head>
 <body>
-  <h1>Neo Auto Vault App</h1>
-  <p>This is the placeholder. Replace this file with your full HTML tracker.</p>
+  <h1>Neo Auto Vault</h1>
+  <p>Track your ₦500 daily savings until December 31, 2025</p>
+  <div id="calendar" class="calendar"></div>
+
+  <script>
+    const startDate = new Date('2025-07-16');
+    const endDate = new Date('2025-12-31');
+    const today = new Date();
+    const dailyGoal = 500;
+    const checkpointInterval = 5000;
+
+    const totalDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
+    const calendar = document.getElementById("calendar");
+
+    for (let i = 0; i < totalDays; i++) {
+      const currentDate = new Date(startDate);
+      currentDate.setDate(startDate.getDate() + i);
+
+      const div = document.createElement("div");
+      div.classList.add("day");
+
+      if (
+        currentDate.getDate() === today.getDate() &&
+        currentDate.getMonth() === today.getMonth() &&
+        currentDate.getFullYear() === today.getFullYear()
+      ) {
+        div.classList.add("today");
+      }
+
+      const savedAmount = (i + 1) * dailyGoal;
+      if (savedAmount % checkpointInterval === 0) {
+        div.classList.add("checkpoint");
+      }
+
+      div.textContent = `${currentDate.toDateString().slice(4, 10)}`;
+      calendar.appendChild(div);
+    }
+  </script>
 </body>
 </html>
